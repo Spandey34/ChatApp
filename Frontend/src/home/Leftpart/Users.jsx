@@ -4,6 +4,7 @@ import UseGetAllUsers from "../../context/UseGetAllUsers";
 
 function Users() {
   const [allUsers, loading] = UseGetAllUsers();
+  
   return (
     <div>
       <h1 className="px-8 py-2 text-white font-semibold bg-slate-800 rounded-md">

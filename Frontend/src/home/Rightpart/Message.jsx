@@ -1,22 +1,31 @@
-import React from 'react'
+import React from "react";
 
-function Message() {
+function Message({ user, message, time }) {
   return (
     <div>
       <div className="p-2">
-        <div className="chat chat-start">
-          <div className="chat-bubble chat-bubble-primary">
-            What kind of nonsense is this
-          </div>
-        </div>
-        <div className="chat chat-end">
-          <div className="chat-bubble chat-bubble-accent">
-            That's never been done in the history of the Jedi.
-          </div>
-        </div>
+        {user === "sender" ? (
+          <>
+            <div className="chat chat-end">
+              <div className="flex flex-col justify-start items-start chat-bubble chat-bubble-accent">
+                {message}
+                <span className=" text-blue-900 text-sm " >{time}</span>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={`chat chat-start`}>
+              <div className="flex flex-col justify-start items-start chat-bubble chat-bubble-primary">
+                {message}
+                <span className=" text-blue-900 text-sm " >{time}</span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Message
+export default Message;

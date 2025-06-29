@@ -5,16 +5,21 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import  { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthProvider'
+import Loading from './components/Loading'
+import { useSelectedUser } from './context/SelectedUserProvider'
+import WelComePage from './components/WelComePage'
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
+  const [selectedUser,setSelectedUser] = useSelectedUser();
   return (
       <Routes>
         <Route path='/' element={
           authUser ? (
             <div className='flex h-screen' >
               <Left />
-              <Right />
+              {selectedUser ? <Right /> : <WelComePage /> }
+              
             </div>
           ) : <Navigate to={"/login"} />
         } />
@@ -22,7 +27,7 @@ function App() {
         <Route path='/login' element={ authUser ? <Navigate to={"/"} /> : <Login />}  />
     
       </Routes>
-    
+      //<Loading />
   )
 }
 

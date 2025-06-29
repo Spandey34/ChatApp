@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelectedUser } from '../../context/SelectedUserProvider'
 
 function Chatuser() {
+  const[selectedUser, setSelectedUser] = useSelectedUser();
   return (
     <div className='h-[8vh] flex space-x-3 justify-center items-center bg-gray-800 hover:bg-gray-700 duration-300' >
       <div className="avatar">
@@ -9,7 +11,7 @@ function Chatuser() {
           </div>
         </div>
         <div>
-            <h1 className='text-xl' >Akhil</h1>
+            <h1 className='text-xl' >{selectedUser.fullname}</h1>
             <span className='text-sm' >Offline</span>
         </div>
     </div>
