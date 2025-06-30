@@ -31,7 +31,7 @@ export const MessageProvider = ({ children }) => {
     fetchMessages();
     //console.log(isLoading);
     setIsLoading(false);
-  },[selectedUser]);
+  },[selectedUser, isLoading]);
   return (
     <MessageContext.Provider value={[chatMessages, setChatMessages]}>
       {children}

@@ -7,13 +7,16 @@ import { BrowserRouter } from 'react-router-dom'
 import { SelectedUserContext, SelectedUserProvider } from './context/SelectedUserProvider.jsx'
 import { MessageProvider } from './context/MessageProvider.jsx'
 import { LoadingProvider } from './context/LoadingProvider.jsx'
+import { SocketProvider } from './context/SocketContext.jsx'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter >
    <SelectedUserProvider>
     <LoadingProvider>
       <AuthProvider>
       <MessageProvider>
+        <SocketProvider >
           <App />
+        </SocketProvider>
       </MessageProvider> 
     </AuthProvider>
     </LoadingProvider>

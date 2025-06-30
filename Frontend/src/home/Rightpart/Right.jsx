@@ -20,7 +20,9 @@ function Right() {
         
       </div>
       <Typesend />
-    </div> : <Loading />)
+    </div> : 
+    <div className='w-[70%] bg-slate-900 text-gray-300' ><Loading />
+      </div>)
     
   )
 }

@@ -5,21 +5,26 @@ import { useSelectedUser } from "../../context/SelectedUserProvider";
 import { useAuth } from "../../context/AuthProvider";
 import axios from "axios";
 import { useMessage } from "../../context/MessageProvider";
+import { useLoading } from "../../context/LoadingProvider";
 function Typesend() {
   const [chat, setChat] = useState("");
   const [selectedUser, setSelectedUser] = useSelectedUser();
   const [authUser, setAuthUser] = useAuth();
   const [chatMessages, setChatMessages] = useMessage();
+  const [isLoading, setIsLoading] = useLoading();
   const handleSubmit = async (req, res) => {
     try {
+      setIsLoading(true);
       const receiverId = selectedUser._id;
 
-      await axios.post(`/api/message/send/${receiverId}`, { message: chat });
+      const res = await axios.post(`/api/message/send/${receiverId}`, { message: chat });
 
-      const res = await axios.get(`/api/message/get/${receiverId}`);
-      setChatMessages(res.data);
+      // const res = await axios.get(`/api/message/get/${receiverId}`);
+      //console.log(res.data.newMessage);
+      setChatMessages([...chatMessages,res.data.newMessage]);
 
       setChat("");
+      setIsLoading(false);
     } catch (error) {
       console.log("Error in sending Message! " + error);
     }

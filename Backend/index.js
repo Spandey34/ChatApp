@@ -5,8 +5,9 @@ import userRoutes from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js"
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { app, server } from "./SocketIO/server.js";
 
-const app = express();
+
 app.use(cors());
 dotenv.config();
 app.use(cookieParser());
@@ -26,6 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoute)
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Example app is listening at Port: ${port}`)
 })
