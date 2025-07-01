@@ -2,6 +2,7 @@ import React from 'react'
 import Search from './Search'
 import Users from './Users'
 import Logout from './Logout'
+import Menu from '../../components/Menu'
 
 function Left() {
   return (

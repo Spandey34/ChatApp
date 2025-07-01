@@ -8,6 +8,7 @@ import { useAuth } from './context/AuthProvider'
 import Loading from './components/Loading'
 import { useSelectedUser } from './context/SelectedUserProvider'
 import WelComePage from './components/WelComePage'
+import ProfileUploader from './components/ProfileUploader'
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -25,9 +26,12 @@ function App() {
         } />
         <Route path='/signup' element={ authUser ? <Navigate to={"/"} /> : <Signup />} />
         <Route path='/login' element={ authUser ? <Navigate to={"/"} /> : <Login />}  />
-    
+        <Route path='/profile' element={ authUser ? <ProfileUploader /> : <Login />}  />
       </Routes>
-      //<Loading />
+    //   <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    //   <ProfileUploader />
+    // </div>
+    //<Menu />
   )
 }
 

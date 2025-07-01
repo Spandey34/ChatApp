@@ -15,7 +15,7 @@ function User({user, status}) {
           }} >
         <div className="avatar relative  ">
           <div className="w-12 ring-primary ring-offset-base-100 rounded-full ring-2 ring-offset-2 overflow-visible">
-            <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+            <img src={user.image} />
             <div className={`absolute top-0 right-0 h-3 w-3 ${status ? "bg-green-500" : "bg-red-600"} rounded-full ring-2 ring-white`} ></div>
           </div>
           
