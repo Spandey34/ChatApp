@@ -12,6 +12,12 @@ const allowedOrigins = [
   "http://localhost:3001"
 ];
 
+app.use((err, req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://chat-app-frontend-zeta-two.vercel.app");
+  res.status(err.status || 500).json({ message: err.message });
+});
+
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
