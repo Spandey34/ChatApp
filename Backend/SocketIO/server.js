@@ -7,7 +7,22 @@ import dotenv from "dotenv"
 const app = express();
 
 dotenv.config();
-const allowedOrigins = process.env.FRONTEND_URL || "http://localhost:3001";
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3001"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for: " + origin));
+    }
+  },
+  credentials: true
+}));
+app.use(cookieParser());
 
 const server = http.createServer(app);
 

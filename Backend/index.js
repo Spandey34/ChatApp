@@ -10,22 +10,6 @@ import uploadRoutes from "./routes/upload.route.js"
 
 
 dotenv.config();
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  "http://localhost:3001"
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed for: " + origin));
-    }
-  },
-  credentials: true
-}));
-app.use(cookieParser());
 const port = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URI;
 
@@ -39,9 +23,9 @@ try {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("https://chatapp-rowq.onrender.com/api/user", userRoutes);
-app.use("https://chatapp-rowq.onrender.com/api/message", messageRoute);
-app.use("https://chatapp-rowq.onrender.com/api/upload", uploadRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/message", messageRoute);
+app.use("/api/upload", uploadRoutes);
 
 server.listen(port, () => {
     console.log(`Example app is listening at Port: ${port}`)
