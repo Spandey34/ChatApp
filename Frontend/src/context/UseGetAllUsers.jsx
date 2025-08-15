@@ -11,7 +11,7 @@ function UseGetAllUsers() {
             setLoading(true);
         try {
             const token = Cookies.get("jwt");
-            const response = await axios.get("/api/user/allusers", {
+            const response = await axios.get("https://chatapp-rowq.onrender.com/api/user/allusers", {
                 credentials: "include"//to receive cookies in the response
             })
             setAllUsers(response.data);

@@ -17,9 +17,9 @@ function Typesend() {
       setIsLoading(true);
       const receiverId = selectedUser._id;
 
-      const res = await axios.post(`/api/message/send/${receiverId}`, { message: chat });
+      const res = await axios.post(`https://chatapp-rowq.onrender.com/api/message/send/${receiverId}`, { message: chat });
 
-      // const res = await axios.get(`/api/message/get/${receiverId}`);
+      // const res = await axios.get(`https://chatapp-rowq.onrender.com/api/message/get/${receiverId}`);
       //console.log(res.data.newMessage);
       setChatMessages([...chatMessages,res.data.newMessage]);
 

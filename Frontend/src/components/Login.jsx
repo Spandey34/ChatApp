@@ -13,7 +13,7 @@ function Login() {
       email: email,
       password: password,
     };
-    await axios.post("/api/user/login", userInfo)
+    await axios.post("https://chatapp-rowq.onrender.com/api/user/login", userInfo)
     .then((response) => {
       if(response.data) {
         alert("User logged in successfully");
