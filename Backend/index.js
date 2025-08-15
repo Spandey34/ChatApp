@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js"
-import cors from "cors";
-import cookieParser from "cookie-parser";
 import { app, server } from "./SocketIO/server.js";
 import uploadRoutes from "./routes/upload.route.js"
 
