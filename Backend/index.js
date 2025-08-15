@@ -8,8 +8,23 @@ import cookieParser from "cookie-parser";
 import { app, server } from "./SocketIO/server.js";
 import uploadRoutes from "./routes/upload.route.js"
 
-app.use(cors());
+
 dotenv.config();
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3001"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for: " + origin));
+    }
+  },
+  credentials: true
+}));
 app.use(cookieParser());
 const port = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URI;

@@ -2,14 +2,18 @@ import {Server} from "socket.io";
 import http from "http";
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv"
 
 const app = express();
+
+dotenv.config();
+const allowedOrigins = process.env.FRONTEND_URL || "http://localhost:3001";
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3001",
+        origin: allowedOrigins,
         methods: ["GET","POST"],
     }
 });
