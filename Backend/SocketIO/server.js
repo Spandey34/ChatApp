@@ -13,31 +13,37 @@ const allowedOrigins = [
   "http://localhost:3001"
 ];
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://chat-app-frontend-zeta-two.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "https://chat-app-frontend-zeta-two.vercel.app");
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // Handle preflight requests
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
+//   // Handle preflight requests
+//   if (req.method === "OPTIONS") {
+//     return res.sendStatus(200);
+//   }
 
-  next();
-});
+//   next();
+// });
 
 
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed for: " + origin));
-    }
-  },
-  credentials: true
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("CORS not allowed for: " + origin));
+//     }
+//   },
+//   credentials: true
+// }));
+
+// app.use(cors({
+//     origin: allowedOrigins,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+// }));
 
 const server = http.createServer(app);
 

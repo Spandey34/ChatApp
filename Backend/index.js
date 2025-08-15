@@ -5,6 +5,7 @@ import userRoutes from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js"
 import { app, server } from "./SocketIO/server.js";
 import uploadRoutes from "./routes/upload.route.js"
+import cors from "cors";
 
 
 dotenv.config();
@@ -18,7 +19,17 @@ try {
     console.log(error);
 }
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3001"
+];
 
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/user", userRoutes);
