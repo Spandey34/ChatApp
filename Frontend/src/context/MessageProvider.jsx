@@ -19,7 +19,7 @@ export const MessageProvider = ({ children }) => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(
-          `https://chatapp-rowq.onrender.com/api/message/get/${selectedUser._id}`
+          `https://chatapp-if9x.onrender.com/api/message/get/${selectedUser._id}`
         );
         setChatMessages(response.data);
         //console.log(response.data);

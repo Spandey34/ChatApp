@@ -20,7 +20,7 @@ function Signup() {
         };
     //console.log(userInfo);
 
-    await axios.post("https://chatapp-rowq.onrender.com/api/user/signup", userInfo)
+    await axios.post("https://chatapp-if9x.onrender.com/api/user/signup", userInfo)
     .then((response) => {
       if(response.data)
       {
