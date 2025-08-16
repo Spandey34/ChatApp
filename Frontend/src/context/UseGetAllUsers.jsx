@@ -13,7 +13,7 @@ function UseGetAllUsers() {
             const token = Cookies.get("jwt");
             console.log("jwt token is", token);
             const response = await axios.get("https://chatapp-if9x.onrender.com/api/user/allusers", {
-                credentials: "include"//to receive cookies in the response
+                withCredentials: true//to receive cookies in the response
             })
             setAllUsers(response.data);
             setLoading(false);
